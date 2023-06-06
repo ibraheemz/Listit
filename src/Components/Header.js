@@ -1,4 +1,3 @@
-import ListitLogo from '../../../assets/LISTIT-3 (1).png'
 import React from 'react';
 
 const Header = () => {
