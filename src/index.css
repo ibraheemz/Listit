@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Maven Pro', 'Josefin Sans', sans-serif;
+}
+
+
+.nav-wrapper {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.nav-wrapper nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+.logo {
+    color: white;
+    font-size: 32px;
+    font-family: 'Monoton', 'Josefin Sans';
+}
+.logo span {
+    color: #ea1538;
+    font-family: 'Monoton', 'Josefin Sans';
+}
+.nav-wrapper ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+.nav-wrapper ul li a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Maven Pro', 'Josefin Sans';
+    font-weight: bold;
+    font-size: 20px;
+}
+.nav-wrapper ul li a:hover {
+    color: #ea1538;
+    transition: 0.3s;
+}
+.nav-wrapper button {
+    border: none;
+    background: #ea1538;
+    padding: 12px 30px;
+    color: white;
+    border-radius: 30px;
+    font-family: 'Maven Pro', 'Josefin Sans';
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.4s;
+}
+.nav-wrapper button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
