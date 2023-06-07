@@ -70,7 +70,6 @@ const Intro = () => {
             collaborative: false
         }
         spotifyUserId 
-        
             ?axios.post(url, playlistDate, {
                 headers: {
                     Authorization: `Bearer ${token}`,
