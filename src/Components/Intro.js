@@ -8,7 +8,82 @@ const Intro = () => {
     var spotifyUserId = "";
 
     const handleInput = (e) => {
-        setInputValue(e.target.value)
+        setPlaylistLink(e.target.value)
+    }
+    //get Youtube playlist id
+    const handleLink = (e) => {
+        //slice the link from list= to 34 chars after
+        //the playlist's id  string length is 34
+        const playListId = playlistLink.slice(playlistLink.indexOf("list=") + 5, playlistLink.indexOf("list=") + 39)
+        console.log("Play List Id: ", playListId);
+        e.preventDefault()
+
+        getPlaylistInfo(playListId)
+        getSpotifyUserId()
+        createSpotifyPlayList()
+    }
+    //get songs info from Youtube playlist link and set it as an array for playlistSongsInfo
+    const getPlaylistInfo = (playListId) => {
+        const url = "https://www.googleapis.com/youtube/v3/playlistItems"
+        const params = {
+            key: process.env.REACT_APP_API_KEY,
+            part: "snippet",
+            playlistId: playListId,
+            maxResults: 50
+        }
+         axios.get(url, { params })
+            .then(response => {
+                if(response.status === 200) {
+                    response.data.items.map((song) => {
+                        playlistSongsInfo.push(song.snippet.title)
+                    })
+                } else {
+                    console.log("getPlaylistInfo call wasn't successful: ", response.error)
+                }
+            })
+
+    }
+    //Get Spotify User Id  || Still no check if logged in #!!!!###
+    const getSpotifyUserId = () => {
+        const url = "https://api.spotify.com/v1/me"
+
+        axios.get(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if(response.status === 200) {
+                    spotifyUserId = response.data.id
+                } else {
+                    console.log("getSpotifyUserId call wasn't successful: ", response.error)
+                }
+            })
+    }
+    //Make a new playlist on user's Spotify Account
+    const createSpotifyPlayList = () => {
+        const url = `https://api.spotify.com/v1/users/${spotifyUserId}/playlists`
+        const playlistDate = {
+            name: "LISTIT",
+            descriptipn: "Your Youtube Playlist is here now",
+            public: false,
+            collaborative: false
+        }
+        spotifyUserId 
+            ?axios.post(url, playlistDate, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+
+            }).then(response => {
+                if(response.status === 200) {
+                    console.log("createSpotifyPlayList call was successful: ", response.data)
+                } else {
+                    console.log("createSpotifyPlayList call wasn't successful: ", response.error.message)
+                }
+            })
+            :console.log("spotifyUserId is not set yet")
     }
     // const createSpotifyPlayList = () => {
     //     const url = `https://api.spotify.com/v1/users/${spotifyUserId}/playlists`
