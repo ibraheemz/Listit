@@ -17,7 +17,6 @@ const Intro = () => {
         const playListId = playlistLink.slice(playlistLink.indexOf("list=") + 5, playlistLink.indexOf("list=") + 39)
         console.log("Play List Id: ", playListId);
         e.preventDefault()
-
         getPlaylistInfo(playListId)
         getSpotifyUserId()
         createSpotifyPlayList()
@@ -26,7 +25,7 @@ const Intro = () => {
     const getPlaylistInfo = (playListId) => {
         const url = "https://www.googleapis.com/youtube/v3/playlistItems"
         const params = {
-            key: process.env.REACT_APP_API_KEY,
+            key: process.env.REACT_APP_API_KEY ,
             part: "snippet",
             playlistId: playListId,
             maxResults: 50
