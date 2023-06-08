@@ -43,8 +43,11 @@ const Intro = () => {
             })
 
     }
+
+
     //Get Spotify User Id  || Still no check if logged in #!!!!###
     const getSpotifyUserId = () => {
+        
         const url = "https://api.spotify.com/v1/me"
 
         axios.get(url, {
@@ -85,23 +88,7 @@ const Intro = () => {
             })
             :console.log("spotifyUserId is not set yet")
     }
-    // const createSpotifyPlayList = () => {
-    //     const url = `https://api.spotify.com/v1/users/${spotifyUserId}/playlists`
-    //     const playlistData = {
-    //         name: "LISTIT",
-    //         description: "LISTIT playlist description",
-    //         public: false
-    //     };
 
-    //     axios.post(url, playlistData, {
-    //         headers: {
-    //             Authorization: `Bearer ${token}`,
-    //             ContentType: "application/json"
-    //         },
-    //     }).then((response) => {
-    //     console.log("createSpotifyPlayList: ",response.data);
-    //     });
-    // }
     const showModal = () => {
         document.getElementById("myModal").style.display = "flex";
     }
