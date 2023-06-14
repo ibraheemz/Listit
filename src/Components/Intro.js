@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Alert from "./Alert";
 
 const Intro = () => {
     const [playlistLink, setPlaylistLink] = useState("");
@@ -9,6 +8,9 @@ const Intro = () => {
     const [spotifyPlaylistId, setSpotifyPlaylistId] = useState("")
     const [playlistTracksnames, setPlaylistTracksnames] = useState([])
     const [tracksUri, setTracksUri] = useState([])
+    // var uriArray = []
+    // const [open, setOpen] = useState("false")
+    // const [alertObj, setAlertObj] = useState({});
     var token = window.localStorage.getItem("token");
 
     useEffect(() => {
@@ -34,6 +36,14 @@ const Intro = () => {
         addTracksToList()
     },[tracksUri])
 
+
+
+    // const handleOpen = (obj) => {
+    //     setOpen(true)
+    //     setAlertObj(obj)
+    // }
+    // const handleClose = () => setOpen(false)
+
     const handleInput = (e) => {
         setPlaylistLink(e.target.value)
     }
@@ -46,8 +56,10 @@ const Intro = () => {
             return regex.test(url);
         }
         if(!isYoutubePlaylistLink(playlistLink)) {
-            window.alert('Please Make sure This Link is a YouTube playlist link.')
+            e.preventDefault()
+            window.alert("Please make sure you entered a valid Youtube playlist Link")
             return;
+            // handleOpen({msg: "Please make sure you entered a valid Youtube playlist Link", Button1: "Try again"})
         }
           
         //check if user is logged in and token is stored in localStorage
@@ -68,6 +80,7 @@ const Intro = () => {
         axios.get("http://localhost:8888/refresh_token").then((response) => {
             token = response.access_token
             console.log("refreshToken is set: ", response.access_token)
+            getSpotifyUserId()
         })
     }
 
@@ -145,61 +158,64 @@ const Intro = () => {
             }
         }).catch((error) => {
             console.log(error)
+            return;
         })
     }
-
-    //get Tracks URIs
-    const getTracksUri = () => {
+    async function settingUris (track) {
         const url = "https://api.spotify.com/v1/search"
+        const params = {
+            type: "track",
+            limit: 1,
+            q: track
+        }
         const headers = {
             Authorization: `Bearer ${token}`
         }
-        let uriArray = []
-        playlistTracksnames.forEach((track) => {
-            const params = {
-                type: "track",
-                limit: 1,
-                q: track
-            }
-            axios.get(url, { 
-                params: params,
-                headers: headers
-            }).then((response) => {
-                uriArray.push(response.data.tracks.items[0].uri)
-            }).catch((error) => {
-                console.log(error)
-            })
+        const response = await axios.get(url, {
+            params: params,
+            headers: headers
         })
-        setTracksUri(uriArray)
-        console.log("Spotify URIs done, length is: ", uriArray.length)
-        
+        //uriArray.push(response.data.tracks.items[0].uri)
+        setTracksUri(currentUris => [...currentUris, response.data.tracks.items[0].uri])
+        response.error && console.log(response.error)
     }
-
+    //get Tracks URIs
+    const getTracksUri = () => {
+        playlistTracksnames.forEach((track) => {
+            settingUris(track)
+        })
+    }
     //add tracks to spotify playlist 
     const addTracksToList = () => {
-        const axiosOptions = {
-            method: 'POST',
-            url: `https://api.spotify.com/v1/playlists/${spotifyPlaylistId}/tracks`,
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-            data: {
-                "uris": tracksUri,
-                "position": 0
+        console.log("Spotify URIs length is: ", tracksUri.length)
+
+            const axiosOptions = {
+                method: 'POST',
+                url: `https://api.spotify.com/v1/playlists/${spotifyPlaylistId}/tracks`,
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+                data: {
+                    "uris": tracksUri,
+                }
+                
             }
-            
-        }
-        console.log(tracksUri)
-        axios(axiosOptions).then((response) => {
-            if(response.status === 201)  {
-                console.log("addTracksToList func successfully done and response status is: ", response.status)
-                return (
-                    <Alert />
-                )
-            }
-        }).catch((error) => {
-            console.log("addTracksToList func wasn't successfully done: ", error)
-        })
+            tracksUri.length && 
+            axios(axiosOptions).then((response) => {
+                if(response.status === 201 || response.status === 200)  {
+                    console.log("addTracksToList func successfully done and response status is: ", response.status)
+                }
+                // handleOpen({
+                //     msg: "Your Spotify Playlist is ready",
+                //     subMsg: "btw i made it private and not collabrative, mut you can edit that anytime you want",
+                //     Button1: "Okay"
+                // })
+                window.alert("All done!, Your playlist is ready.")
+            }).catch((error) => {
+                console.log("addTracksToList func wasn't able to add this track: ", error)
+            })
+        
+        
     }
 
     const showModal = () => {
@@ -236,6 +252,30 @@ const Intro = () => {
                     <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
                 </form>
             </div>
+            {/* <div
+                style={{ display: open }}
+                onClose={handleClose}
+            >
+                <div>
+                    {
+                        alertObj.msg && alertObj.subMsg 
+                        ? <div>
+                            <h1>{alertObj.msg}</h1>
+                            <h2>{alertObj.subMsg}</h2>
+                        </div>
+                        : <h1>{alertObj.msg}</h1>
+                        
+                    }
+                </div>
+                    {
+                        <div>
+                            <button onClick={handleClose}
+                                className="btn btn-primary">
+                                {alertObj.Button1}
+                            </button>
+                        </div>
+                    }
+            </div> */}
 
         </div>
     )
