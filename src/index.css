@@ -64,7 +64,7 @@ body {
     transform: scale(1.1);
     cursor: pointer;
 }
-.intro-main{
+.convertion-main{
     color: white;
     display: flex;
     align-items: center;
@@ -73,7 +73,7 @@ body {
     margin-top: 20vh;
     font-size: 30px;
 }
-.intro-main p {
+.convertion-main p {
     padding: 15px;
 }
 
@@ -89,14 +89,14 @@ body {
     font-size: 17px;
     transition: 0.4s;
 }
-.intro-main button:hover {
+.convertion-main button:hover {
     transform: scale(1.3);
     transition: 0.4s;
 }
 
 /*Modal*/
 #myModal {
-    display: none;
+    display: flex;
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -114,6 +114,7 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background2.jpg);
     background-size: cover;
     background-position: center;
+
   }
   .modal-content {
     padding: 10px;
@@ -176,4 +177,37 @@ body {
 .modalSubmit:hover {
     transform: scale(1.1);
     transition: 0.4s;
+}
+.modal-wrapper {
+    display: flex;
+    flex-direction: row;
+    
+}
+.modalCloseSign {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    top: 20%;
+    left: 81%;
+    transform: translate(-50%, -50%);
+    color: #e0e0e0;
+    padding: 10px;
+    z-index: 1001;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ea1538;
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+.modalCloseSign:hover {
+    transition: 0.3s;
+    scale: 1.5;
+}
+.modalCloseCross {
+    font-weight: bolder;
+    font-family: 'Monoton', 'Josefin Sans';
+    cursor: pointer;
+
 }
