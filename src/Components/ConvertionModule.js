@@ -212,7 +212,7 @@ const ConvertionModule = () => {
             }).catch((error) => {
                 console.log("addTracksToList func wasn't able to add this track: ", error)
             })
-        
+            navigate("/Home")
         
     }
     // showModal 

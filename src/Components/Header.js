@@ -19,7 +19,6 @@ const Header = () => {
         }
 
         setToken(token)
-
     }, [])
 
     const logout = () => {
