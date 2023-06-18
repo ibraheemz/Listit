@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { motion } from "framer-motion/dist/framer-motion";
 
 const ConvertionModule = () => {
     const [token, setToken] = useState("")
@@ -219,37 +220,14 @@ const ConvertionModule = () => {
             navigate("/Home")
         
     }
-    // showModal 
-    //     ?document.getElementById("myModal").style.display = "flex"
-    //     :document.getElementById("myModal").style.display = "none";
-        
-    // const closeModal = () => {
-    //     document.getElementById("myModal").style.display = "none";
-    // }
-    // document.getElementById("myModal")&&
-    // document.addEventListener('click', function(event) {
-    //     if (event.target !== document.getElementById('myModal')
-    //     && event.target !== document.getElementById('mdlInput')
-    //     && event.target !== document.getElementById('CvBtn')
-    //     && event.target !== document.getElementById('mdlLbl')
-    //     ) {
-    //         navigate("/Home")
-    //         console.log("you clicked")
-    //     }
-    // })
-    // document.getElementById("myModal")&&
-    // document.addEventListener('click', function(event) {
-    //     if (event.target !== document.getElementById("modal")
-    //     && event.target.closest("modal") === null 
-    //     ) {
-    //         navigate("/Home")
-    //         console.log("you clicked")
-    //     }
-    // })
-
-  
+    
     return (
-        <div className="modal-wrapper">
+        <motion.div 
+            className="modal-wrapper"
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+        >
             <div className="modalCloseSign" onClick={ () => navigate("/Home")}>
                 <span className="modalCloseCross" aria-hidden="true">X</span>
             </div>
@@ -270,7 +248,7 @@ const ConvertionModule = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,8 +1,13 @@
 import React from "react";
-
+import { motion } from "framer-motion/dist/framer-motion";
 const About = () => {
     return(
-        <div className="about">
+        <motion.div 
+            className="about"
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+        >
             <h1 className="about_header">About</h1>
             <p className="about_para">
                 This web app allows you to easily transfer your favorite YouTube playlists to your Spotify account. Simply enter the URL of your YouTube playlist, and the app will create a new playlist on your Spotify account with the same songs. You can also choose to rename the playlist.
@@ -24,7 +29,7 @@ const About = () => {
                 <li>highly secured.</li>
             </ul>
             <footer>We hope you enjoy your new Spotify playlist! Please feel free to give us <a href="#">feedback</a></footer>
-        </div>
+        </motion.div>
     )
 }
 

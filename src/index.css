@@ -75,6 +75,7 @@ body {
 }
 .convertion-main p {
     padding: 15px;
+    text-align: center;
 }
 
 #modalButton {
@@ -238,7 +239,7 @@ input:-webkit-autofill:focus {
     cursor: pointer;
 
 }
-.about{
+.about, .help, .contact-us{
     
     color: white;
     margin: 30px 0px 50px 0px;
@@ -247,15 +248,15 @@ input:-webkit-autofill:focus {
     height: 75vh;
     font-size: 1rem;
 }
-.about p,.about li  {
+.about p,.about li, .help p, .help li {
     letter-spacing: 2px;
     line-height: 2;
     
 }
-.about p {
+.about p, .help p{
     padding-bottom: 30px;
 }
-.about footer {
+.about footer, .help footer {
     margin-top: 7%;
     text-align: center;
     font-size: 15px;
@@ -267,24 +268,38 @@ input:-webkit-autofill:focus {
     left: 0;
     right: 0;
 }
-.fade-appear,
-.fade-enter {
-opacity: 0;
-z-index: 1;
-}
-.fade-appear-active,
-.fade-enter.fade-enter-active {
-opacity: 1;
-transition: opacity 450ms linear 250ms;
-}
-.fade-exit {
-opacity: 1;
-}
-.fade-exit.fade-exit-active {
-opacity: 0;
-transition: opacity 150ms linear;
+.help {
+    height: 800px;
+    overflow: auto;
+    float: left;
+    position: relative;
+    margin-left: -5px;
 }
 
+.contact-us h2{
+    font-size: 2.5rem;
+}
+.contacts-list li {
+    margin-top: 40px;
+    
+}
+.contact-us a{
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    
+}
+.contact-us a:hover {
+    color: #ea1538;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+.contact-name {
+    padding: 15px;
+}
+.contact-logo {
+    font-size: 3rem;
+}
 
 /*from 1535 to 600*/
 @media only screen and (max-width: 1535px) {

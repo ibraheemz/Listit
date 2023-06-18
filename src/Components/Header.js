@@ -38,10 +38,10 @@ const Header = () => {
                         <a href='/About'>About</a>
                     </li>
                     <li>
-                        <a href='#'>Contact Us</a>
+                        <a href='/ContactUs'>Contact Us</a>
                     </li>
                     <li>
-                        <a href='#'>Help</a>
+                        <a href='/Help'>Help</a>
                     </li>
                 </ul>
                 {
