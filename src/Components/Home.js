@@ -5,7 +5,7 @@ const Home = () => {
     const navigate = useNavigate();
     
     return (
-        <div>
+        <div className="home">
             <div className="convertion-main">
                 <h1>TRANSFER YOUR PLAYLIST USING LISTIT</h1>
                 <p>LISTIT will transfer your favourite music playlist on Youtube and create it on Spotify</p>

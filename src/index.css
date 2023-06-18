@@ -261,6 +261,31 @@ input:-webkit-autofill:focus {
     font-size: 15px;
 }
 
+.home, .about {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+}
+.fade-appear,
+.fade-enter {
+opacity: 0;
+z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+opacity: 1;
+transition: opacity 450ms linear 250ms;
+}
+.fade-exit {
+opacity: 1;
+}
+.fade-exit.fade-exit-active {
+opacity: 0;
+transition: opacity 150ms linear;
+}
+
+
 /*from 1535 to 600*/
 @media only screen and (max-width: 1535px) {
     .about{
