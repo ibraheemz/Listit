@@ -4,7 +4,8 @@ import axios from "axios";
 
 const ConvertionModule = () => {
     const [token, setToken] = useState("")
-    const [playlistLink, setPlaylistLink] = useState("");
+    const [playlistLink, setPlaylistLink] = useState("")
+    const [playlistName, setPlaylistName] = useState("")
     const [googleToken, setGoogleToken] = useState("")
     const [spotifyUserId, setSpotifyUserId] = useState("")
     const [spotifyPlaylistId, setSpotifyPlaylistId] = useState("")
@@ -41,6 +42,9 @@ const ConvertionModule = () => {
 
     const handleInput = (e) => {
         setPlaylistLink(e.target.value)
+    }
+    const handleNameInput = (e) => {
+        setPlaylistName(e.target.value)
     }
     //get Youtube playlist id
     const handleLink = (e) => {
@@ -144,7 +148,7 @@ const ConvertionModule = () => {
               'Content-Type': 'application/json',
             },
             data: {
-              name: 'LISTIT',
+              name: !playlistName.length ? 'LISTIT' : playlistName,
               description: 'Your Youtube Playlist',
               public: false,
               collaborative: false
@@ -253,10 +257,16 @@ const ConvertionModule = () => {
                 <div id="myModal" >
                     <form className="getLinkForm" name="getLinkForm" >
                         <div className="modelInputWrapper">
-                            <label htmlFor="mdlInput" id="mdlLbl" className="modal_form_label">Youtube Link</label>
-                            <input className="modalInput" id="mdlInput" type="text" name="getLinkInput" value={playlistLink} onChange={ e => handleInput(e)}/>
+                            <div className="link_inbt_lbl">
+                                <label htmlFor="mdlInput" id="mdlLbl" className="modal_form_label">Youtube Link</label>
+                                <input className="modalInput" id="mdlInput" type="text" name="getLinkInput" placeholder="Enter YouTube playlist link here" value={playlistLink} onChange={ e => handleInput(e)}/>
+                            </div>
+                            <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
                         </div>
-                        <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
+                        <div className="nameInputWrapper">
+                            <label className="listname_lbl" htmlFor="nameInput">Name your playlist</label>
+                            <input className="modalInput" id="nameInput" placeholder="LISTIT is set by default . . ."   value={playlistName} onChange={ e => handleNameInput(e)}></input>
+                        </div>
                     </form>
                 </div>
             </div>

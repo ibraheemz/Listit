@@ -97,9 +97,11 @@ body {
 /*Modal*/
 #myModal {
     display: flex;
+    flex-wrap: wrap;
     position: fixed;
     justify-content: center;
     align-items: center;
+    align-content: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -131,7 +133,8 @@ body {
   }
   .getLinkForm {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
   .modalInput {
     width: 35vw;
@@ -146,6 +149,16 @@ body {
 .modalInput:focus {
     outline: none;
 }
+::placeholder {
+    background: transparent;
+    color: #ea153963;
+    font-size: medium;
+    font-style: italic;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
 .modal_form_label {
     color: #ea1538;
     font-family: 'Maven Pro', 'Josefin Sans';
@@ -153,7 +166,21 @@ body {
     font-size: 32px;
 
 }
+.listname_lbl {
+    color: #ea1538;
+    font-family: 'Maven Pro', 'Josefin Sans';
+    font-weight:400;
+    font-size: 22px;
+}
 .modelInputWrapper{
+    display: flex;
+    flex-direction: row;
+}
+.nameInputWrapper {
+    display: flex;
+    flex-direction: column;
+}
+.link_inbt_lbl {
     display: flex;
     flex-direction: column;
 }
@@ -210,4 +237,77 @@ body {
     font-family: 'Monoton', 'Josefin Sans';
     cursor: pointer;
 
+}
+.about{
+    
+    color: white;
+    margin: 30px 0px 50px 0px;
+    padding: 60px 150px 150px 150px;
+    background-image: linear-gradient(to left, #ea1538, #ea35153a);
+    height: 75vh;
+    font-size: 1rem;
+}
+.about p,.about li  {
+    letter-spacing: 2px;
+    line-height: 2;
+    
+}
+.about p {
+    padding-bottom: 30px;
+}
+.about footer {
+    margin-top: 7%;
+    text-align: center;
+    font-size: 15px;
+}
+
+/*from 1535 to 600*/
+@media only screen and (max-width: 1535px) {
+    .about{
+    
+    color: white;
+    margin: 15px 0px 25px 0px;
+    padding: 50px 50px 50px 50px;
+    background-image: linear-gradient(to left, #ea1538, #ea35153a);
+    height: 75vh;
+    font-size: small;
+    }
+    .nav-wrapper nav {
+        padding-top: 10px;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .logo {
+        font-size: 25px;
+    }
+    .nav-wrapper ul li {
+        padding: 5px 10px;
+    }
+    .nav-wrapper ul li a {
+        font-size: 15px;
+    }
+    .nav-wrapper .login-button {
+        padding: 8px 20px;
+        font-size: 17px;
+    }
+    .modalCloseSign {
+        left: 78%
+    }
+    .modalInput {
+        width: 35vw;
+    }
+    #myModal {
+        flex-wrap: wrap;
+        font-size: 1rem
+    }
+    .modal_form_label {
+        font-size: 1.5rem;
+    }
+    .getLinkForm {
+        flex-direction: column;
+    }
+    .modalSubmit {
+        padding: 10px 20px;
+        margin: 10%;        
+    }
 }
