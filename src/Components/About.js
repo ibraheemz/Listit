@@ -1,12 +1,26 @@
 import React from "react";
 import { motion } from "framer-motion/dist/framer-motion";
 const About = () => {
+    const containerVariants = {
+        hidden: {
+          opacity: 0
+        },
+        visible: {
+          opacity: 1,
+          transition: { delay: 0.5, duration: 0.5 }
+        },
+        exit: {
+          x: '-100vw',
+          transition: { ease: 'easeInOut' }
+        }
+      }
     return(
         <motion.div 
             className="about"
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
         >
             <h1 className="about_header">About</h1>
             <p className="about_para">

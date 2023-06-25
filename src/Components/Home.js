@@ -4,14 +4,26 @@ import { motion } from "framer-motion/dist/framer-motion"
 
 const Home = () => {
     const navigate = useNavigate();
-    
+    const containerVariants = {
+        hidden: {
+          opacity: 0
+        },
+        visible: {
+          opacity: 1,
+          transition: { delay: 0.8, duration: 0.8 }
+        },
+        exit: {
+          x: '-100vw',
+          transition: { ease: 'easeInOut' }
+        }
+      }
     return (
         <motion.div 
             className="home"
-            key="Home"
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            exit={{ y: window.innerHeight, transition: { duration: 0.1 } }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
         >
             <div className="convertion-main">
                 <h1>TRANSFER YOUR PLAYLIST USING LISTIT</h1>

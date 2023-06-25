@@ -14,6 +14,20 @@ const ConvertionModule = () => {
     const [tracksUri, setTracksUri] = useState([])
     const navigate = useNavigate()
 
+    const containerVariants = {
+        hidden: {
+          opacity: 0
+        },
+        visible: {
+          opacity: 1,
+          transition: { delay: 0.5, duration: 0.5 }
+        },
+        exit: {
+          opacity: 0,
+          transition: { ease: 'easeInOut' }
+        }
+      }
+
     useEffect(() => {
         setToken(window.localStorage.getItem("token"))
     },[token])
@@ -74,21 +88,7 @@ const ConvertionModule = () => {
         }
     }
 
-    const refreshToken = () => {
-        const axiosOptions = {
-            url: "http://localhost:8888/refresh_token",
-            method: "GET",
-            params: {
-                "refresh_token": window.localStorage.getItem("refresh_token")
-            }
-        }
-        axios(axiosOptions).then((response) => {
-            setToken(response.access_token)
-            console.log("refreshToken is set: ", response.access_token)
-            getSpotifyUserId()
-        })
-    }
-
+    
     //get songs info from Youtube playlist link and set it as an array for playlistSongsInfo
     const getPlaylistInfo = (playListId) => {
         const url = "https://www.googleapis.com/youtube/v3/playlistItems"
@@ -100,9 +100,9 @@ const ConvertionModule = () => {
             maxResults: 50
         }
         
-         axios.get(url, { params })
-            .then(response => {
-                if(response.status === 200) {
+        axios.get(url, { params })
+        .then(response => {
+            if(response.status === 200) {
                     let playlistSongsInfo = [];
                     response.data.items.forEach((song) => {
                         playlistSongsInfo.push(song.snippet.title)
@@ -115,30 +115,44 @@ const ConvertionModule = () => {
             }).catch((error) => {
                 console.log(error)
             })
-
+            
     }
-    //Get Spotify User Id  || Still no check if logged in #!!!!###
-    const getSpotifyUserId = () => {
         
+    const refreshToken = () => {
+        const refresh_token = window.localStorage.getItem("refresh_token")
+        const axiosOptions = {
+            url: "http://localhost:8888/refresh_token",
+            method: "GET",
+            params: {
+                "refresh_token": refresh_token
+            }
+        }
+        axios(axiosOptions).then((response) => {
+            setToken(response.data.access_token)
+            console.log("refreshToken is set: ", response)
+            getSpotifyUserId()
+        })
+    }
+        //Get Spotify User Id  || Still no check if logged in #!!!!###
+    const getSpotifyUserId = () => {
         const url = "https://api.spotify.com/v1/me"
-
-        axios.get(url, {
+        const axiosOptions = {
+            url: url,
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
             }
+        }
+        axios(axiosOptions).then((response) => {
+            setSpotifyUserId(response.data.id)
+        }).catch((error) => {
+            console.log(error)
+            window.localStorage.setItem("token", "")
+            refreshToken()
         })
-            .then(response => {
-                if(response.status === 200) {
-                    setSpotifyUserId(response.data.id)
-                } else if(response.data.error.message === "The access token expired"){
-                    refreshToken()
-                    console.log("getSpotifyUserId call wasn't successful /n trying to get a refreshToken: ", response.error)
-                } else {
-                    refreshToken()
-                    console.log("trying to get a refreshToken")
-                }
-            })
+
     }
+    
     //Make a new playlist on user's Spotify Account
     const createSpotifyPlayList = () => {
         const axiosOptions = {
@@ -224,9 +238,10 @@ const ConvertionModule = () => {
     return (
         <motion.div 
             className="modal-wrapper"
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
         >
             <div className="modalCloseSign" onClick={ () => navigate("/Home")}>
                 <span className="modalCloseCross" aria-hidden="true">X</span>

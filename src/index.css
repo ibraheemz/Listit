@@ -5,6 +5,7 @@
     font-family: 'Maven Pro', 'Josefin Sans', sans-serif;
 }
 body {
+    /* background-image: linear-gradient(to left, #000000b7, #6d0000b0);; */
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background.jpg);
     background-size: cover;
     background-position: center;
@@ -35,16 +36,20 @@ body {
     display: inline-block;
     padding: 10px 20px;
 }
-.nav-wrapper ul li a{
+.nav-wrapper ul li button{
+    
     color: white;
     text-decoration: none;
+    border: none;
+    outline: none;
+    background: none;
     font-family: 'Maven Pro', 'Josefin Sans';
     font-weight: bold;
     font-size: 20px;
     
 
 }
-.nav-wrapper ul li a:hover {
+.nav-wrapper ul li button:hover {
     color: #ea1538;
     transition: 0.3s;
 }
@@ -273,7 +278,6 @@ input:-webkit-autofill:focus {
     overflow: auto;
     float: left;
     position: relative;
-    margin-left: -5px;
 }
 
 .contact-us h2{
@@ -304,7 +308,6 @@ input:-webkit-autofill:focus {
 /*from 1535 to 600*/
 @media only screen and (max-width: 1535px) {
     .about{
-    
     color: white;
     margin: 15px 0px 25px 0px;
     padding: 50px 50px 50px 50px;
@@ -323,7 +326,7 @@ input:-webkit-autofill:focus {
     .nav-wrapper ul li {
         padding: 5px 10px;
     }
-    .nav-wrapper ul li a {
+    .nav-wrapper ul li button {
         font-size: 15px;
     }
     .nav-wrapper .login-button {

@@ -11,11 +11,11 @@ function AnimatedRoutes() {
     const location = useLocation();
   return (
     <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
+        <Routes location={location} key={location.key}>
             <Route path="/Home" exact Component={Home} />
             <Route path="/" exact Component={Home} />
             <Route path="/ConvertionModule" exact Component={ConvertionModule} />
-            <Route path="/About" exact Component={About}/>
+            <Route path="/About" exact Component={About} />
             <Route path="/Help" exact Component={Help} />
             <Route path="/ContactUs" exact Component={ContactUs} />
         </Routes>

@@ -4,12 +4,28 @@ import { motion } from "framer-motion/dist/framer-motion";
 import { SiGmail } from "react-icons/si"
 
 const ContactUs = () => {
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: { delay: 0.5, duration: 0.5 }
+    },
+    exit: {
+      x: '-100vw',
+      transition: { ease: 'easeInOut' }
+    }
+  }
+
   return (
     <motion.div 
         className="contact-us"
-        initial={{ width: 0 }}
-        animate={{ width: "100%" }}
-        exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
     >
       <h2>Contact Us</h2>
       <ul className="contacts-list">

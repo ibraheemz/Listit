@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
     
     const [token, setToken] = useState("")
-
+    const navigate = useNavigate();
     useEffect(() => {
         const pathname = window.location.pathname
         let token = window.localStorage.getItem("token")
@@ -32,16 +32,16 @@ const Header = () => {
                 <h2 className='logo'>LIST<span>IT</span></h2>
                 <ul>
                     <li>
-                        <a href='/Home'>Home</a>
+                        <button onClick={() => navigate('/Home')}>Home</button>
                     </li>
                     <li>
-                        <a href='/About'>About</a>
+                        <button onClick={() => navigate('/About')}>About</button>
                     </li>
                     <li>
-                        <a href='/ContactUs'>Contact Us</a>
+                        <button onClick={() => navigate('/ContactUs')}>Contact Us</button>
                     </li>
                     <li>
-                        <a href='/Help'>Help</a>
+                        <button onClick={() => navigate('/Help')}>Help</button>
                     </li>
                 </ul>
                 {
