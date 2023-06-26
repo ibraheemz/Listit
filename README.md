@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# LISTIT
+LISTIT is a web application that allows users to convert a YouTube playlist to a Spotify playlist.
+This repository contains the frontend code for the LISTIT application.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
++ You can transfer your youtube playlist and name it through the home page with a "Let's Start" button that opens a modal with two inputs: a YouTube playlist link and a name for the new Spotify playlist.
++ Authentication with Spotify using the "Login with Spotify" button on the top right of the page.
++ A Node.js backend with CORS and Express is used to securely store sensitive information such as the Spotify API client ID and client secret.
++ React Router DOM, Axios, React Icons, and Framer Motion are used to create a smooth user experience and animations between pages.
++ The app is styled with CSS3 and uses Flexbox for layout. It is also **responsive** on all screens and uses **Media queries** to adapt to different screen sizes.
 
-## Available Scripts
+## Installation
+To get started with LISTIT, first clone this repository:
 
-In the project directory, you can run:
+``` 
+git clone https://github.com/ibraheemz/Listit.git
+```
 
-### `npm start`
+Next, navigate to the listit directory and install the dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+cd Listit
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+***Note: For now, you would have to integrate the login with Spotify functions, which are made in the backend of the project which is not in this repo yet, as it requires some sensitive information like "client_id " and "clint_secret ", also you would have to get a google access token too.***
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Usage
+To start the application, run the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm start
+```
+This will start the development server on http://localhost:3000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
+LISTIT is built using the following technologies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
++ Frontend is built using **React.js**
++ Routing with **React router dom**
++ Animations with **Framer motion**
++ Async API calls with **Axios**
++ Styling with **CSS3, Media queries, Bootstrap, react-icons**
++ Backend with **Node.js** , **Express**, **Cors**
++ **REST API**
++ **Spotify API**
++ **Google OAuth2.0**
