@@ -23,7 +23,9 @@ cd listit
 npm install
 ```
 
-*** Note: For now, you would have to integrate the login with Spotify functions, which are made in the backend of the project which is not in this repo yet, as it requires some sensitive information like "client_id " and "clint_secret ", also you would have to get a google access token too. ***
+
+***Note: For now, you would have to integrate the login with Spotify functions, which are made in the backend of the project which is not in this repo yet, as it requires some sensitive information like "client_id " and "clint_secret ", also you would have to get a google access token too.***
+
 
 ## Usage
 To start the application, run the following command:
@@ -36,12 +38,12 @@ This will start the development server on http://localhost:3000.
 ## Tech Stack
 LISTIT is built using the following technologies:
 
-+Frontend is built using **React.js**
-+Routing with **React router dom**
-+Animations with **Framer motion**
-+Async API calls with **Axios**
-+Styling with **CSS3, Media queries, Bootstrap, react-icons**
-+Backend with **Node.js** , **Express**, **Cors**
-+**REST API**
-+**Spotify API**
-+**Google OAuth2.0**
++ Frontend is built using **React.js**
++ Routing with **React router dom**
++ Animations with **Framer motion**
++ Async API calls with **Axios**
++ Styling with **CSS3, Media queries, Bootstrap, react-icons**
++ Backend with **Node.js** , **Express**, **Cors**
++ **REST API**
++ **Spotify API**
++ **Google OAuth2.0**
