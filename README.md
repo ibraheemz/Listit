@@ -13,13 +13,13 @@ This repository contains the frontend code for the LISTIT application.
 To get started with LISTIT, first clone this repository:
 
 ``` 
-git clone https://github.com/ibraheemz/listit.git
+git clone https://github.com/ibraheemz/Listit.git
 ```
 
 Next, navigate to the listit directory and install the dependencies:
 
 ```
-cd listit
+cd Listit
 npm install
 ```
 
