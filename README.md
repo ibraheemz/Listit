@@ -12,19 +12,25 @@ This repository contains the frontend code for the LISTIT application.
 ## Installation
 To get started with LISTIT, first clone this repository:
 
-``` git clone https://github.com/ibraheemz/listit.git ```
+``` 
+git clone https://github.com/ibraheemz/listit.git
+```
 
 Next, navigate to the listit directory and install the dependencies:
 
-``` cd listit
-npm install ```
+```
+cd listit
+npm install
+```
 
 *** Note: For now, you would have to integrate the login with Spotify functions, which are made in the backend of the project which is not in this repo yet, as it requires some sensitive information like "client_id " and "clint_secret ", also you would have to get a google access token too. ***
 
 ## Usage
 To start the application, run the following command:
 
-``` npm start ```
+```
+npm start
+```
 This will start the development server on http://localhost:3000.
 
 ## Tech Stack
