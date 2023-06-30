@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion/dist/framer-motion";
 
-const ConvertionModule = () => {
+const ConversionModule = () => {
     const [token, setToken] = useState("")
     const [playlistLink, setPlaylistLink] = useState("")
     const [playlistName, setPlaylistName] = useState("")
@@ -267,4 +267,4 @@ const ConvertionModule = () => {
     )
 }
 
-export default ConvertionModule
+export default ConversionModule

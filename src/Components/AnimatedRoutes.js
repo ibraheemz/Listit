@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../Components/Home";
-import ConvertionModule from "../Components/ConvertionModule";
+import ConversionModule from "./ConversionModule";
 import About from "../Components/About";
 import Help from './Help';
 import ContactUs from './ContactUs';
@@ -14,7 +14,7 @@ function AnimatedRoutes() {
         <Routes location={location} key={location.key}>
             <Route path="/Home" exact Component={Home} />
             <Route path="/" exact Component={Home} />
-            <Route path="/ConvertionModule" exact Component={ConvertionModule} />
+            <Route path="/ConversionModule" exact Component={ConversionModule} />
             <Route path="/About" exact Component={About} />
             <Route path="/Help" exact Component={Help} />
             <Route path="/ContactUs" exact Component={ContactUs} />
