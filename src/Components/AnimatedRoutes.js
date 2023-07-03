@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes, useLocation } from "react-router-dom";
-import Home from "../Components/Home";
+import Home from "./Home";
 import ConversionModule from "./ConversionModule";
-import About from "../Components/About";
+import About from "./About";
 import Help from './Help';
 import ContactUs from './ContactUs';
 import { AnimatePresence } from "framer-motion/dist/framer-motion"

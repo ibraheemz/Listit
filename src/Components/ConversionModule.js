@@ -241,8 +241,12 @@ const ConversionModule = () => {
             axios(axiosOptions).then((response) => {
                 if(response.status === 201 || response.status === 200)  {
                     console.log("addTracksToList func successfully done and response status is: ", response.status)
+                    Swal.fire(
+                        'Done!',
+                        'Your playlist has been created.',
+                        'success'
+                    );
                 }
-                window.alert("All done!, Your playlist is ready.")
 
                 
             }).catch((error) => {
