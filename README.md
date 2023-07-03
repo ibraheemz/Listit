@@ -1,6 +1,6 @@
 # LISTIT
 LISTIT is a web application that allows users to convert a YouTube playlist to a Spotify playlist.
-This repository contains the frontend code for the LISTIT application.
+This repository contains the frontend and the backend code for the LISTIT application.
 
 ## Features
 + You can transfer your youtube playlist and name it through the home page with a "Let's Start" button that opens a modal with two inputs: a YouTube playlist link and a name for the new Spotify playlist.
@@ -22,18 +22,36 @@ Next, navigate to the listit directory and install the dependencies:
 cd Listit
 npm install
 ```
+Next, you need to clone the [backend](https://github.com/ibraheemz/Listit-Backend) of the application:
+
+```
+git clone https://github.com/ibraheemz/Listit-Backend.git
+```
+Now, navigate to the Listit-Backend directory and install the dependencies:
+
+```
+cd Listit-Backend
+npm install
+```
 
 
-***Note: For now, you would have to integrate the login with Spotify functions, which are made in the backend of the project which is not in this repo yet, as it requires some sensitive information like "client_id " and "clint_secret ", also you would have to get a google access token too.***
+***Note: you need to create a .env file in the Listit-Backend directory and set your environment variables: CLIENT_ID with your Spotify client_id, CLIENT_SECRET with your Spotify client_secret, and your GOOGLE_TOKEN with yours.***
 
 
 ## Usage
-To start the application, run the following command:
+To start the application, 
+First, navigate to the frontend folder and run the following command:
 
 ```
 npm start
 ```
 This will start the development server on http://localhost:3000.
+
+Then, move to the backend folder and run
+```
+nodemon start
+```
+This will start the server on http://localhost:8888
 
 ## Tech Stack
 LISTIT is built using the following technologies:
