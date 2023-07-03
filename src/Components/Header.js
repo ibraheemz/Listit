@@ -29,19 +29,19 @@ const Header = () => {
     return (
         <div className='nav-wrapper'>
             <nav>
-                <h2 className='logo'>LIST<span>IT</span></h2>
-                <ul>
+                <h2 data-testid="logo_header" className='logo'>LIST<span>IT</span></h2>
+                <ul data-testid="nav_list">
                     <li>
-                        <button onClick={() => navigate('/Home')}>Home</button>
+                        <button data-testid="nav_to_home" onClick={() => navigate('/Home')}>Home</button>
                     </li>
                     <li>
-                        <button onClick={() => navigate('/About')}>About</button>
+                        <button data-testid="nav_to_about" onClick={() => navigate('/About')}>About</button>
                     </li>
                     <li>
-                        <button onClick={() => navigate('/ContactUs')}>Contact Us</button>
+                        <button data-testid="nav_to_contact" onClick={() => navigate('/ContactUs')}>Contact Us</button>
                     </li>
                     <li>
-                        <button onClick={() => navigate('/Help')}>Help</button>
+                        <button data-testid="nav_to_help" onClick={() => navigate('/Help')}>Help</button>
                     </li>
                 </ul>
                 {

@@ -2,6 +2,7 @@ import React, { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion/dist/framer-motion";
+import Swal from "sweetalert2"
 
 const ConversionModule = () => {
     const [token, setToken] = useState("")
@@ -14,6 +15,7 @@ const ConversionModule = () => {
     const [tracksUri, setTracksUri] = useState([])
     const navigate = useNavigate()
 
+    //routing animation
     const containerVariants = {
         hidden: {
           opacity: 0
@@ -55,6 +57,22 @@ const ConversionModule = () => {
         return(setTracksUri([]))
     },[spotifyPlaylistId])
 
+    const handleSpotifyAlert = () => {
+        Swal.fire({
+          title: 'You are not logged in',
+          text: 'Please make sure you are logged in with your spotify account',
+          icon: 'warning',
+          confirmButtonText: 'Alright!',
+        })
+    };
+    const handleYoutubeAlert = () => {
+        Swal.fire({
+          title: 'Link is incorrect',
+          text: 'Please make sure you have entered a valid Youtube playlist link',
+          icon: 'warning',
+          confirmButtonText: 'Try Again!',
+        })
+    };
     const handleInput = (e) => {
         setPlaylistLink(e.target.value)
     }
@@ -71,14 +89,13 @@ const ConversionModule = () => {
         }
         if(!isYoutubePlaylistLink(playlistLink)) {
             e.preventDefault()
-            window.alert("Please make sure you entered a valid Youtube playlist Link")
+            handleYoutubeAlert()
             return;
-            // handleOpen({msg: "Please make sure you entered a valid Youtube playlist Link", Button1: "Try again"})
         }
           
         //check if user is logged in and token is stored in localStorage
         if(!window.localStorage.token) {
-            window.alert("please login with your spotify account")
+            handleSpotifyAlert()
         } else {
             const playListId = playlistLink.slice(playlistLink.indexOf("list=") + 5, playlistLink.indexOf("list=") + 39)
             console.log("Play List Id: ", playListId);
@@ -248,13 +265,17 @@ const ConversionModule = () => {
             </div>
             <div className="convertion-main">
                 <div id="myModal" >
-                    <form className="getLinkForm" name="getLinkForm" >
+                    <form className="getLinkForm">
                         <div className="modelInputWrapper">
                             <div className="link_inbt_lbl">
                                 <label htmlFor="mdlInput" id="mdlLbl" className="modal_form_label">Youtube Link</label>
-                                <input className="modalInput" id="mdlInput" type="text" name="getLinkInput" placeholder="Enter YouTube playlist link here" value={playlistLink} onChange={ e => handleInput(e)}/>
+                                <input className="modalInput" id="mdlInput" type="text" placeholder="Enter YouTube playlist link here" value={playlistLink} onChange={ e => handleInput(e)}/>
                             </div>
-                            <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
+                            {
+                                playlistLink
+                                ? <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
+                                : <button disabled className="modalSubmit"  id="CvBtn">Convert</button> 
+                            }
                         </div>
                         <div className="nameInputWrapper">
                             <label className="listname_lbl" htmlFor="nameInput">Name your playlist</label>

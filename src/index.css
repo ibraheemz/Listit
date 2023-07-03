@@ -69,13 +69,15 @@ body {
     transform: scale(1.1);
     cursor: pointer;
 }
-.convertion-main{
+.home {
+    margin-top: 25vh;
+}
+.convertion-main {
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20vh;
     font-size: 30px;
 }
 .convertion-main p {
@@ -207,6 +209,25 @@ input:-webkit-autofill:focus {
     font-weight: bold;
     font-size: 20px;
     transition: 0.4s;
+    
+}
+.modalSubmit:disabled,
+    .modalSubmit[disabled] {
+    width: fit-content;
+    height: min-content;
+    padding: 15px;
+    margin-left: 30px;
+    margin-top: auto;
+    border: none;
+    background: #ea1538;
+    padding: 20px 40px;
+    color: white;
+    border-radius: 35px;
+    font-family: 'Maven Pro', 'Josefin Sans';
+    font-weight: bold;
+    font-size: 20px;
+    cursor: not-allowed;
+    opacity: 0.6;
     
 }
 .modalSubmit:hover {
@@ -348,6 +369,9 @@ input:-webkit-autofill:focus {
         padding: 8px 20px;
         font-size: 17px;
     }
+    .convertion-main p {
+        padding: 25px;
+    }
     .modalCloseSign {
         left: 78%
     }
@@ -368,4 +392,6 @@ input:-webkit-autofill:focus {
         padding: 10px 20px;
         margin: 10%;        
     }
+
+    
 }
