@@ -265,7 +265,7 @@ const ConversionModule = () => {
             exit="exit"
         >
             <div className="modalCloseSign" onClick={ () => navigate("/Home")}>
-                <span className="modalCloseCross" aria-hidden="true">X</span>
+                <span className="modalCloseCross" role="x-button" aria-hidden="true">X</span>
             </div>
             <div className="convertion-main">
                 <div id="myModal" >
