@@ -50,6 +50,7 @@ const ConversionModal = () => {
           text: 'Please make sure you are logged in with your spotify account',
           icon: 'warning',
           confirmButtonText: 'Alright!',
+          confirmButtonColor: '#ea1538'
         })
     };
     const handleYoutubeAlert = () => {
@@ -58,6 +59,7 @@ const ConversionModal = () => {
           text: 'Please make sure you have entered a valid Youtube playlist link',
           icon: 'warning',
           confirmButtonText: 'Try Again!',
+          confirmButtonColor: '#ea1538'
         })
     }
     const handleInput = (e) => {

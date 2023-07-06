@@ -15,7 +15,13 @@ function Help() {
           x: '-100vw',
           transition: { ease: 'easeInOut' }
         }
-      }
+    }
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+    }
   return (
         <motion.div
             className="help"
@@ -34,9 +40,9 @@ function Help() {
                 <h2>How to Use the Website</h2>
                 <ul>
                     The website is designed to be easy to use. However, if you are having trouble, please refer to the following sections:
-                    <li><Link className="nav-links" to="#getting-started-sect">Getting Started</Link></li>
-                    <li><Link className="nav-links" to="#using-website-sect">Using the Website</Link></li>
-                    <li><Link className="nav-links" to="#troubleshooting-sect">Troubleshooting</Link></li>
+                    <li><a className="nav-links" onClick={() => scrollToSection("getting-started-sect")}>Getting Started</a></li>
+                    <li><a className="nav-links" onClick={() => scrollToSection("using-website-sect")}>Using the Website</a></li>
+                    <li><a className="nav-links" onClick={() => scrollToSection("troubleshooting-sect")}>Troubleshooting</a></li>
                 </ul>
             </section>
             <section data-testid="getting-started-sect" id="getting-started-sect">

@@ -27,7 +27,16 @@ const Header = () => {
         } else {
             token = window.localStorage.token
         }
-        setToken(token)
+        if(token){
+            setToken(token)
+            Toast.fire({
+            icon: 'success',
+            title: 'Logged in successfully',
+            position: 'top'
+            })
+        } else {
+            setToken(token)
+        }
     }, [])
 
     window.addEventListener('beforeunload', function() {  //when the page closes, clear token and refresh token
@@ -46,13 +55,15 @@ const Header = () => {
         Toast.fire({
             icon: 'success',
             title: 'Logged out successfully',
+            position: 'top'
         })
     }
     const logoutAuto = () => {
         removeAuth()
         ToastNoTimer.fire({
             icon: 'warning',
-            title: 'Your session has ended, please login again to continue'
+            title: 'Your session has ended, please login again to continue',
+            position: "top"
         })
     }
 
