@@ -15,8 +15,7 @@ const ConversionModal = () => {
     const [playlistTracksnames, setPlaylistTracksnames] = useState([])
     const [tracksUri, setTracksUri] = useState([])
     const navigate = useNavigate()
-    const tracksUriRef = useRef([])
-    tracksUriRef.current = tracksUri
+
    
     useEffect(() => {
         setToken(window.localStorage.getItem("token"))
@@ -41,7 +40,7 @@ const ConversionModal = () => {
         spotifyUserId.length &&
         spotifyPlaylistId &&
         tracksUri &&
-        addTracksToList(tracksUriRef.current)
+        addTracksToList(tracksUri)
         return(setTracksUri([]))
     },[spotifyPlaylistId])
 

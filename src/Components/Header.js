@@ -1,12 +1,11 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Toast, ToastNoTimer } from './utils';
 const Header = () => {
     
     const [token, setToken] = useState("")
     const [timerId, setTimerId] = useState(null)
-    const navigate = useNavigate();
 
     useEffect(() => {
       setTimerId(setTimeout(logoutAuto,3600000)) // 1hr | log user out after 1h of loggin in 
