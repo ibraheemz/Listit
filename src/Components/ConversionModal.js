@@ -229,25 +229,26 @@ const ConversionModal = () => {
             axios(axiosOptions).then((response) => {
                 if(response.status === 201 || response.status === 200)  {
                     console.log("addTracksToList func successfully done and response status is: ", response.status)
-                    Swal.fire(
-                        'Done!',
-                        'Your playlist has been created.',
-                        'success'
-                    )
+                    Toast.fire({
+                        icon: 'success',
+                        title: playlistName ? ` ${playlistName} Playlist successfully created!` : "Playlist successfully created!",
+                        position: 'top'
+                    })
                 }
             }).catch((error) => {
                 console.log("addTracksToList func wasn't able to add this track: ", error)
                 if(error.response.data.message === "The access token expired") {
                     Toast.fire({
                         icon: 'warning',
-                        title: 'Your session has expired, please login again to continue'
+                        title: 'Your session has expired, please login again to continue',
+                        position: 'top'
                     })
                 }
             })
             navigate("/Home")
         } else {
             Swal.fire(
-                'Sorry',
+                'Ooops!',
                 'There has been an error creating this one! please try again',
                 'error'
             )

@@ -24,8 +24,14 @@ const Header = () => {
             window.location.pathname = "/"
             window.localStorage.setItem("token", token)
             window.localStorage.setItem("refresh_token", refresh_token)
-        } else {
-            token = window.localStorage.token
+        } else if(pathname[1] === "e") {
+            Toast.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: 'An error occured while loggin in, Try again',
+                position: 'top',
+                timer: '3000'
+                })
         }
         if(token){
             setToken(token)
