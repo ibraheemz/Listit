@@ -28,7 +28,7 @@ const Home = () => {
             <div className="convertion-main">
                 <h1>TRANSFER YOUR PLAYLIST USING LISTIT</h1>
                 <p data-testid="home-p">LISTIT will transfer your favourite music playlist from your Youtube to your Spotify</p>
-                <button id="modalButton" onClick={ () => navigate("/ConversionModule")} >Let's Start</button>
+                <button id="modalButton" onClick={ () => navigate("/ConversionModal")} >Let's Start</button>
             
             </div>
         </motion.div>

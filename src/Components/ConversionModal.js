@@ -5,7 +5,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 import Swal from "sweetalert2"
 import { Toast } from "./utils"
 
-const ConversionModule = () => {
+const ConversionModal = () => {
     const [token, setToken] = useState("")
     const [playlistLink, setPlaylistLink] = useState("")
     const [playlistName, setPlaylistName] = useState("")
@@ -304,4 +304,4 @@ const ConversionModule = () => {
     )
 }
 
-export default ConversionModule
+export default ConversionModal
