@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Home from "../Home";
+import Home from "../Components/Home";
 
 test("Home component has a header and a paragraph", () => {
 	render(

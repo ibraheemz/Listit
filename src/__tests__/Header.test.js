@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter } from "react-router-dom"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import Header from "../Header"
+import Header from "../Components/Header"
 
 test ("nav bar has 4 buttons and each has the right text", () => {
     

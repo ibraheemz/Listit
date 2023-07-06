@@ -1,8 +1,9 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion/dist/framer-motion";
 import Swal from "sweetalert2"
+import { Toast } from "./utils"
 
 const ConversionModule = () => {
     const [token, setToken] = useState("")
@@ -14,22 +15,9 @@ const ConversionModule = () => {
     const [playlistTracksnames, setPlaylistTracksnames] = useState([])
     const [tracksUri, setTracksUri] = useState([])
     const navigate = useNavigate()
-
-    //routing animation
-    const containerVariants = {
-        hidden: {
-          opacity: 0
-        },
-        visible: {
-          opacity: 1,
-          transition: { delay: 0.5, duration: 0.5 }
-        },
-        exit: {
-          opacity: 0,
-          transition: { ease: 'easeInOut' }
-        }
-      }
-
+    const tracksUriRef = useRef([])
+    tracksUriRef.current = tracksUri
+   
     useEffect(() => {
         setToken(window.localStorage.getItem("token"))
     },[token])
@@ -53,7 +41,7 @@ const ConversionModule = () => {
         spotifyUserId.length &&
         spotifyPlaylistId &&
         tracksUri &&
-        addTracksToList(tracksUri)
+        addTracksToList(tracksUriRef.current)
         return(setTracksUri([]))
     },[spotifyPlaylistId])
 
@@ -72,7 +60,7 @@ const ConversionModule = () => {
           icon: 'warning',
           confirmButtonText: 'Try Again!',
         })
-    };
+    }
     const handleInput = (e) => {
         setPlaylistLink(e.target.value)
     }
@@ -224,19 +212,18 @@ const ConversionModule = () => {
     }
     //add tracks to spotify playlist 
     const addTracksToList = () => {
-
-            const axiosOptions = {
-                method: 'POST',
-                url: `https://api.spotify.com/v1/playlists/${spotifyPlaylistId}/tracks`,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                data: {
-                    "uris": tracksUri,
-                }
-                
+        const axiosOptions = {
+            method: 'POST',
+            url: `https://api.spotify.com/v1/playlists/${spotifyPlaylistId}/tracks`,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            data: {
+                "uris": tracksUri,
             }
-            tracksUri.length && 
+            
+        }
+        if(tracksUri.length)  {
             console.log("Spotify URIs length is: ", tracksUri.length)
             axios(axiosOptions).then((response) => {
                 if(response.status === 201 || response.status === 200)  {
@@ -245,17 +232,42 @@ const ConversionModule = () => {
                         'Done!',
                         'Your playlist has been created.',
                         'success'
-                    );
+                    )
                 }
-
-                
             }).catch((error) => {
                 console.log("addTracksToList func wasn't able to add this track: ", error)
+                if(error.response.data.message === "The access token expired") {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Your session has expired, please login again to continue'
+                    })
+                }
             })
             navigate("/Home")
+        } else {
+            Swal.fire(
+                'Sorry',
+                'There has been an error creating this one! please try again',
+                'error'
+            )
+        }
         
     }
-    
+    //routing animation
+    const containerVariants = {
+        hidden: {
+          opacity: 0
+        },
+        visible: {
+          opacity: 1,
+          transition: { delay: 0.5, duration: 0.5 }
+        },
+        exit: {
+          opacity: 0,
+          transition: { ease: 'easeInOut' }
+        }
+    }
+
     return (
         <motion.div 
             className="modal-wrapper"

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-import About from "../About";
+import About from "../Components/About";
 
 test("About has about listit section and Pros sections", () => {
     render(

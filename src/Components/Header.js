@@ -1,8 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Swal from "sweetalert2"
-
+import { Link, useNavigate } from 'react-router-dom';
+import { Toast, ToastNoTimer } from './utils';
 const Header = () => {
     
     const [token, setToken] = useState("")
@@ -32,32 +31,27 @@ const Header = () => {
         setToken(token)
     }, [])
 
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-      
-    const logout = () => {
+    window.addEventListener('beforeunload', function() {  //when the page closes, clear token and refresh token
+        localStorage.setItem("token", '')
+        localStorage.setItem("refresh_token", '')
+    });
+
+    
+    const removeAuth = () => {
         setToken("")
         window.localStorage.removeItem("token")
         window.localStorage.removeItem("refresh_token")
+    }
+    const logout = () => {
+        removeAuth()
         Toast.fire({
             icon: 'success',
-            title: 'Logged out successfully'
+            title: 'Logged out successfully',
         })
     }
     const logoutAuto = () => {
-        setToken("")
-        window.localStorage.removeItem("token")
-        window.localStorage.removeItem("refresh_token")
-        Toast.fire({
+        removeAuth()
+        ToastNoTimer.fire({
             icon: 'warning',
             title: 'Your session has ended, please login again to continue'
         })
@@ -69,16 +63,16 @@ const Header = () => {
                 <h2 data-testid="logo_header" className='logo'>LIST<span>IT</span></h2>
                 <ul data-testid="nav_list">
                     <li>
-                        <button data-testid="nav_to_home" onClick={() => navigate('/Home')}>Home</button>
+                        <Link className="nav-links" data-testid="nav_to_home" to="/Home">Home</Link>
                     </li>
                     <li>
-                        <button data-testid="nav_to_about" onClick={() => navigate('/About')}>About</button>
+                        <Link className="nav-links" data-testid="nav_to_about" to="/About">About</Link>
                     </li>
                     <li>
-                        <button data-testid="nav_to_contact" onClick={() => navigate('/ContactUs')}>Contact Us</button>
+                        <Link className="nav-links" data-testid="nav_to_contact" to="/ContactUs">Contact Us</Link>
                     </li>
                     <li>
-                        <button data-testid="nav_to_help" onClick={() => navigate('/Help')}>Help</button>
+                        <Link className="nav-links" data-testid="nav_to_help" to="/Help">Help</Link>
                     </li>
                 </ul>
                 {

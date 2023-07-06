@@ -36,7 +36,7 @@ body {
     display: inline-block;
     padding: 10px 20px;
 }
-.nav-wrapper ul li button{
+.nav-links{
     
     color: white;
     text-decoration: none;
@@ -49,7 +49,7 @@ body {
     
 
 }
-.nav-wrapper ul li button:hover {
+.nav-links:hover {
     color: #ea1538;
     transition: 0.3s;
 }

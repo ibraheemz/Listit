@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-import Help from "../Help";
+import Help from "../Components/Help";
 
 test("Help ", () => {
     render(
