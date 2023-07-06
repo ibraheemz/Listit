@@ -2,12 +2,12 @@ import React from "react"
 import '@testing-library/jest-dom';
 import { BrowserRouter } from "react-router-dom"
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import ConversionModule from "../Components/ConversionModule"
+import ConversionModal from "../Components/ConversionModal"
 
 test("Youtube link form has link input, name input, and convert button", () => {
     render(
         <BrowserRouter>
-            <ConversionModule />
+            <ConversionModal />
         </BrowserRouter>
     )
 

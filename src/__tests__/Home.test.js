@@ -30,5 +30,5 @@ test("Let's Start Button navigates to Conversion modal", () => {
 	const button = screen.getByRole("button")
 	expect(window.location.pathname).toBe("/")
 	fireEvent.click(button)
-	expect(window.location.pathname).toBe("/ConversionModule")
+	expect(window.location.pathname).toBe("/ConversionModal")
 })
