@@ -69,10 +69,10 @@ const Header = () => {
                         <Link className="nav-links" data-testid="nav_to_about" to="/About">About</Link>
                     </li>
                     <li>
-                        <Link className="nav-links" data-testid="nav_to_contact" to="/ContactUs">Contact Us</Link>
+                        <Link className="nav-links" data-testid="nav_to_help" to="/Help">Help</Link>
                     </li>
                     <li>
-                        <Link className="nav-links" data-testid="nav_to_help" to="/Help">Help</Link>
+                        <Link className="nav-links" data-testid="nav_to_contact" to="/ContactUs">Contact Us</Link>
                     </li>
                 </ul>
                 {

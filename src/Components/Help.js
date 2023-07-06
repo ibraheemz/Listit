@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion/dist/framer-motion";
+import { Link } from 'react-router-dom';
 
 function Help() {
     const containerVariants = {
@@ -33,27 +34,28 @@ function Help() {
                 <h2>How to Use the Website</h2>
                 <ul>
                     The website is designed to be easy to use. However, if you are having trouble, please refer to the following sections:
-                    <li>Getting Started</li>
-                    <li>Using the Website</li>
-                    <li>Troubleshooting</li>
+                    <li><Link className="nav-links" to="#getting-started-sect">Getting Started</Link></li>
+                    <li><Link className="nav-links" to="#using-website-sect">Using the Website</Link></li>
+                    <li><Link className="nav-links" to="#troubleshooting-sect">Troubleshooting</Link></li>
                 </ul>
             </section>
-            <section data-testid="getting-started-sect">
+            <section data-testid="getting-started-sect" id="getting-started-sect">
                 <h3>Getting Started</h3>
                 <p>
-                    To get started with the website, you will need to log in with your Spotify account. Once you have logged in, you will be able to use the website to transere your YouTube playlists to Spotify playlists.
+                    To get started with the website, you will need to log in with your Spotify account. Once you have logged in, you will be able to use the website to convert your YouTube playlists to Spotify playlists.
                 </p>
             </section>
-            <section data-testid="using-website-sect">
+            <section data-testid="using-website-sect" id="using-website-sect">
                 <h3>Using the Website</h3>
                 <ol>
                     To transere a YouTube playlist to a Spotify playlist, simply follow these steps:
                     <li>Enter the URL of your YouTube playlist.</li>
-                    <li>Click the "Convert Playlist" button.</li>
-                    <li>The website will create a new Spotify playlist with the same songs as your YouTube playlist.</li>
+                    <li>Name your playlist, note that if you leave it empty, the playlist name will be LISTIT</li>
+                    <li>Click the "Convert" button.</li>
+                    <li>Open your Spotify account, go to your library, you'll find your playlist under the name you chose or the default name LISTIT</li>
                 </ol>
             </section>
-            <section data-testid="troubleshooting-sect">
+            <section data-testid="troubleshooting-sect" id="troubleshooting-sect">
                 <h3>Troubleshooting</h3>
                 <p>If you are having trouble using the website, please refer to the following section:</p>
                 <h4>This section provides troubleshooting tips for common problems. If you are still having trouble, please contact us for help.</h4>
@@ -76,7 +78,7 @@ function Help() {
                 <h3>Contacting Us</h3>
                 <p>If you have any questions or problems, please contact us. You can contact us by email or by opening a support ticket.</p>
             </section>
-            <footer>We hope you enjoy using our website! If you have any feedback or suggestions, please feel free to contact us.</footer>
+            <footer>We hope you enjoy using our website! If you have any feedback or suggestions, please feel free to <Link className="nav-links" to="/ContactUs">contact us.</Link></footer>
         </motion.div>
     )
 }

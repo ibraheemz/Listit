@@ -6,13 +6,9 @@
 }
 body {
     /* background-image: linear-gradient(to left, #000000b7, #6d0000b0);; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background3.jpg);
     background-size: cover;
-    background-position: center;
 }
-
-
-
 .nav-wrapper nav {
     display: flex;
     align-items: center;
@@ -20,7 +16,6 @@ body {
     padding-top: 40px;
     padding-left: 10%;
     padding-right: 10%;
-
 }
 .logo {
     color: white;
@@ -37,7 +32,6 @@ body {
     padding: 10px 20px;
 }
 .nav-links{
-    
     color: white;
     text-decoration: none;
     border: none;
@@ -46,8 +40,6 @@ body {
     font-family: 'Maven Pro', 'Josefin Sans';
     font-weight: bold;
     font-size: 20px;
-    
-
 }
 .nav-links:hover {
     color: #ea1538;
@@ -121,7 +113,7 @@ body {
     width: 70%;
     height: 75vh;
     border-radius: 100px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background4.jpg);
     background-size: cover;
     background-position: center;
 
@@ -154,32 +146,32 @@ body {
     border-top: 0px;
     border-right: 0px;
     border-left: 0px;
-    color: #ea1538;
+    color: #ffffff;
 }
 .modalInput:focus {
     outline: none;
 }
 ::placeholder {
     background: transparent;
-    color: #ea153963;
+    color: #ffffffb0;
     font-size: medium;
-    font-style: italic;
+    
 }
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s;
 }
 .modal_form_label {
-    color: #ea1538;
+    color: #ffffff;
     font-family: 'Maven Pro', 'Josefin Sans';
     font-weight: bold;
     font-size: 32px;
 
 }
 .listname_lbl {
-    color: #ea1538;
+    color: #ffffff;
     font-family: 'Maven Pro', 'Josefin Sans';
-    font-weight:400;
+    font-weight:bold;
     font-size: 22px;
 }
 .modelInputWrapper{
@@ -193,6 +185,7 @@ input:-webkit-autofill:focus {
 .link_inbt_lbl {
     display: flex;
     flex-direction: column;
+    margin-bottom: 3%;
 }
 .modalSubmit{
     width: fit-content;
@@ -299,6 +292,7 @@ input:-webkit-autofill:focus {
 .help {
     
     overflow: auto;
+    scroll-behavior: smooth;
     float: left;
 }
 .help::-webkit-scrollbar {

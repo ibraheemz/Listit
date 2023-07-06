@@ -24,12 +24,12 @@ test ("nav bar has 4 buttons and each has the right text", () => {
     expect(listItemsCount).toBe(4)
     expect(listItems[0].firstElementChild).toBe(homeButton)
     expect(listItems[1].firstElementChild).toBe(aboutButton)
-    expect(listItems[2].firstElementChild).toBe(contactButton)
-    expect(listItems[3].firstElementChild).toBe(helpButton)
+    expect(listItems[2].firstElementChild).toBe(helpButton)
+    expect(listItems[3].firstElementChild).toBe(contactButton)
     expect(homeButton.textContent).toBe("Home")
     expect(aboutButton.textContent).toBe("About")
-    expect(contactButton.textContent).toBe("Contact Us")
     expect(helpButton.textContent).toBe("Help")
+    expect(contactButton.textContent).toBe("Contact Us")
 })
 
 

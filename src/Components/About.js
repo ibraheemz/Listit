@@ -44,7 +44,7 @@ const About = () => {
                 <li>regularly updated with new features and bug fixes.</li>
                 <li>highly secured.</li>
             </ul>
-            <footer>We hope you enjoy your new Spotify playlist! Please feel free to give us <a href="#">feedback</a></footer>
+            <footer>We hope you enjoy your new Spotify playlist! Please feel free to give us <a className="nav-links" href="#">feedback</a></footer>
         </motion.div>
     )
 }
