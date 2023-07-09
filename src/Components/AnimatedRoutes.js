@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Home";
-import ConversionModal from "./ConversionModal";
 import About from "./About";
-import Help from './Help';
-import ContactUs from './ContactUs';
+import Help from "./Help";
+import ContactUs from "./ContactUs";
+import ConversionModal from "./ConversionModal"
 import { AnimatePresence } from "framer-motion/dist/framer-motion"
 
 function AnimatedRoutes() {
