@@ -89,38 +89,47 @@ const ConversionModal = () => {
         }
     }
 
+    window.onclick = function(event) {
+        if (event.target === document.getElementById("modal-page-id")) {
+          navigate("/Home")
+        }
+      }
+
     return (
         <PlayListNameContext.Provider value={playlistName}>
             <PlayListIdContext.Provider value={ytPlayListId}>
                 <motion.div 
-                    className="modal-wrapper"
+                    className="modal-page"
+                    id="modal-page-id"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
                 >
-                    <div className="modalCloseSign" onClick={ () => navigate("/Home")}>
-                        <span className="modalCloseCross" role="x-button" aria-hidden="true">X</span>
-                    </div>
-                    <div className="convertion-main">
-                        <div id="myModal" >
-                            <form className="getLinkForm">
-                                <div className="modelInputWrapper">
-                                    <div className="link_inbt_lbl">
-                                        <label htmlFor="mdlInput" id="mdlLbl" className="modal_form_label">Youtube Link</label>
-                                        <input className="modalInput" id="mdlInput" type="text" placeholder="Enter YouTube playlist link here" value={playlistLink} onChange={ e => handleInput(e)}/>
+                    <div className="modal-wrapper">
+                        <div className="modalCloseSign" onClick={ () => navigate("/Home")}>
+                            <span className="modalCloseCross" role="x-button" aria-hidden="true">&times;</span>
+                        </div>
+                        <div className="convertion-main">
+                            <div id="myModal" >
+                                <form className="getLinkForm">
+                                    <div className="modelInputWrapper">
+                                        <div className="link_inbt_lbl">
+                                            <label htmlFor="mdlInput" id="mdlLbl" className="modal_form_label">Youtube Link</label>
+                                            <input className="modalInput" id="mdlInput" type="text" placeholder="Enter YouTube playlist link here" value={playlistLink} onChange={ e => handleInput(e)}/>
+                                        </div>
+                                        {
+                                            playlistLink
+                                            ? <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
+                                            : <button disabled className="modalSubmit"  id="CvBtn">Convert</button> 
+                                        }
                                     </div>
-                                    {
-                                        playlistLink
-                                        ? <button className="modalSubmit" id="CvBtn" onClick={(e) => handleLink(e)} >Convert</button>
-                                        : <button disabled className="modalSubmit"  id="CvBtn">Convert</button> 
-                                    }
-                                </div>
-                                <div className="nameInputWrapper">
-                                    <label className="listname_lbl" htmlFor="nameInput">Name your playlist</label>
-                                    <input className="modalInput" id="nameInput" placeholder="LISTIT is set by default . . ."   value={playlistName} onChange={ e => handleNameInput(e)}></input>
-                                </div>
-                            </form>
+                                    <div className="nameInputWrapper">
+                                        <label className="listname_lbl" htmlFor="nameInput">Name your playlist</label>
+                                        <input className="modalInput" id="nameInput" placeholder="LISTIT is set by default . . ."   value={playlistName} onChange={ e => handleNameInput(e)}></input>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
