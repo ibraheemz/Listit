@@ -73,6 +73,12 @@ const Header = () => {
         })
     }
 
+    const toggleMobileMenu = (e) => {
+        const elem = document.getElementById("hamburger-icon")
+
+        elem.classList.toggle('open');
+    }
+
     return (
         <div className='nav-wrapper'>
             <nav>
@@ -97,8 +103,26 @@ const Header = () => {
                     : <button className='login-button' onClick={logout}>Log out</button>
                         
                 }
-                
             </nav>
+            <div id="hamburger-icon" onClick={(e) => toggleMobileMenu(e)}>
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <ul data-testid="nav_list" className="mobile-menu">
+                    <li>
+                        <Link className="nav-links" data-testid="nav_to_home" to="/Home">Home</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-links" data-testid="nav_to_about" to="/About">About</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-links" data-testid="nav_to_help" to="/Help">Help</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-links" data-testid="nav_to_contact" to="/ContactUs">Contact Us</Link>
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }

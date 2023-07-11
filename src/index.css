@@ -1,3 +1,7 @@
+:root {
+    --them-red: #ea1538;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -23,7 +27,7 @@ body {
     font-family: 'Monoton', 'Josefin Sans';
 }
 .logo span {
-    color: #ea1538;
+    color: var(--them-red);
     font-family: 'Monoton', 'Josefin Sans';
 }
 .nav-wrapper ul li {
@@ -43,14 +47,14 @@ body {
     
 }
 .nav-links:hover {
-    color: #ea1538;
+    color: var(--them-red);
     transition: 0.3s;
     cursor: pointer;
 }
 .nav-wrapper .login-button {
     text-decoration: none;
     border: none;
-    background: #ea1538;
+    background: var(--them-red);
     padding: 12px 30px;
     color: white;
     border-radius: 30px;
@@ -62,6 +66,49 @@ body {
 .nav-wrapper .login-button:hover {
     transform: scale(1.1);
     cursor: pointer;
+}
+#hamburger-icon {
+    margin: auto 0;
+    display: none;
+    cursor: pointer;
+}
+#hamburger-icon div {
+    width: 35px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+.open .bar2 {
+    opacity: 0;
+}
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+}
+.open .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;    
+}
+.mobile-menu {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),  url(./assets/Background3.jpg);
+    z-index: 10;
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: calc(100vh - 50px);
+    width: 100%;
+    
+}
+.mobile-menu li {
+    margin-bottom: 10px;
 }
 .home {
     margin-top: 25vh;
@@ -81,7 +128,7 @@ body {
 
 #modalButton {
     border: none;
-    background: #ea1538;
+    background: var(--them-red);
     padding: 20px 40px;
     margin-top: 20px;
     color: white;
@@ -210,7 +257,7 @@ input:-webkit-autofill:focus {
     margin-left: 30px;
     margin-top: auto;
     border: none;
-    background: #ea1538;
+    background: var(--them-red);
     padding: 20px 40px;
     color: white;
     border-radius: 35px;
@@ -228,7 +275,7 @@ input:-webkit-autofill:focus {
     margin-left: 30px;
     margin-top: auto;
     border: none;
-    background: #ea1538;
+    background: var(--them-red);
     padding: 20px 40px;
     color: white;
     border-radius: 35px;
@@ -261,7 +308,7 @@ input:-webkit-autofill:focus {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #ea1538;
+    background-color: var(--them-red);
     opacity: 0.8;
     cursor: pointer;
 
@@ -281,7 +328,7 @@ input:-webkit-autofill:focus {
     color: white;
     margin: 30px 0px 50px 0px;
     padding: 60px 150px 150px 150px;
-    background-image: linear-gradient(to left, #ea1538, #ea35153a);
+    background-image: linear-gradient(to left, var(--them-red), #ea35153a);
     height: 75vh;
     font-size: 1rem;
 }
@@ -340,7 +387,7 @@ input:-webkit-autofill:focus {
     
 }
 .contact-us a:hover {
-    color: #ea1538;
+    color: var(--them-red);
     transition: 0.3s;
     transform: scale(1.1);
 }
@@ -357,7 +404,7 @@ input:-webkit-autofill:focus {
     color: white;
     margin: 15px 0px 25px 0px;
     padding: 50px 50px 50px 50px;
-    background-image: linear-gradient(to left, #ea1538, #ea35153a);
+    background-image: linear-gradient(to left, var(--them-red), #ea35153a);
     height: 75vh;
     font-size: small;
     }
@@ -405,3 +452,16 @@ input:-webkit-autofill:focus {
 
     
 }
+/*mobile view only "display hamberger icon & remove nav bar" */
+@media only screen and (max-width: 700px) {
+    .nav-wrapper nav {
+      display: none;
+    }
+  
+    #hamburger-icon {
+      display: block;
+    }
+    .nav-links {
+        font-size: 30px;
+    }
+  }
